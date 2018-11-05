@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+//hau.nc add for error 767 bytes
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        //hau.nc add for error 767 bytes
+        Schema::defaultStringLength(191);
     }
 
     /**
