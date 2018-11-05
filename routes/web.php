@@ -14,3 +14,25 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix'=>'admin'], function(){
+	Route::group(['prefix'=>'products'], function(){
+		Route::get('list', 'ProductController@listProduct');
+	});
+	Route::group(['prefix'=>'manufactories'], function(){
+		Route::get('list', 'ManufactoriesController@listManufactories');
+		Route::get('add', 'ManufactoriesController@getAdd');
+		Route::post('add', 'ManufactoriesController@postAdd');
+		Route::get('delete/{id}', 'ManufactoriesController@getDelete');
+		Route::get('edit/{id}', 'ManufactoriesController@getEdit');
+		Route::post('edit/{id}', 'ManufactoriesController@postEdit');
+	});
+	Route::group(['prefix'=>'types_product'], function(){
+		Route::get('list', 'TypesProductController@listTypesProduct');
+		Route::get('add', 'TypesProductController@getAdd');
+		Route::post('add', 'TypesProductController@postAdd');
+		Route::get('delete/{id}', 'TypesProductController@getDelete');
+		Route::get('edit/{id}', 'TypesProductController@getEdit');
+		Route::post('edit/{id}', 'TypesProductController@postEdit');
+	});
+});
