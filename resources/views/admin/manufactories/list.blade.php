@@ -12,6 +12,11 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        @if(session('notification'))
+                            <div class="alert alert-success">
+                                {{session('notification')}}
+                            </div>
+                        @endif
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
