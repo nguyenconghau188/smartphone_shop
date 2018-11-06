@@ -17,7 +17,12 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'products'], function(){
-		Route::get('list', 'ProductController@listProduct');
+		Route::get('list', 'ProductsController@listProduct');
+		Route::get('add', 'ProductsController@getAdd');
+		Route::post('add', 'ProductsController@postAdd');
+		Route::get('delete/{id}', 'ProductsController@getDelete');
+		Route::get('edit/{id}', 'ProductsController@getEdit');
+		Route::post('edit/{id}', 'ProductsController@postEdit');
 	});
 	Route::group(['prefix'=>'manufactories'], function(){
 		Route::get('list', 'ManufactoriesController@listManufactories');
