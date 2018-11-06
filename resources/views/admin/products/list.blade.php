@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Phân khúc điện thoại
+                        <h1 class="page-header">Sản phẩm
                             <small>Danh sách</small>
                         </h1>
                     </div>
@@ -41,7 +41,7 @@
                                     <td>{{$product->promotion_price}}</td>
                                     <td><img src="upload/image/{{$product->image}}" alt="{{$product->name}}" style="width: 60px;"></td>
                                     <td>{{$product->sell_quantity}}</td>
-                                    <td class="center"><a href="admin/types_product/delete/{{$product->id}}"> Xóa</a> | <a href="admin/types_product/edit/{{$product->id}}">Sửa</a></td>
+                                    <td class="center"><a href="admin/products/delete/{{$product->id}}"> Xóa</a> | <a href="admin/products/edit/{{$product->id}}">Sửa</a></td>
                                 </tr>
                                 <div class="modal fade" id="myModal{{$product->id}}">
                                     <div class="modal-dialog modal-lg">

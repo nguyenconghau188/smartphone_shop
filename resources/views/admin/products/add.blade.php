@@ -58,11 +58,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Giá (VND)</label>
-                                <input class="form-control" name="unit_price" placeholder="Nhập giá sản phẩm" />
+                                <input class="form-control" name="unit_price" id="unit_price" placeholder="Nhập giá sản phẩm" />
                             </div>
                             <div class="form-group">
                                 <label>Giá khuyến mãi (VND)</label>
-                                <input class="form-control" name="promotion_price" placeholder="Nhập quốc giá khuyến mãi" />
+                                <input class="form-control" name="promotion_price" id="promotion_price" placeholder="Nhập quốc giá khuyến mãi" />
                             </div>
                             <div class="form-group">
                                 <label>Hình ảnh</label>
@@ -87,4 +87,39 @@
             <!-- /.container-fluid -->
         </div>
 
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>Giá trị nhập vào phải là số!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('#unit_price').focusout(function(){
+                var price = $('#unit_price').val();
+                if (isNaN(price)) {
+                    $('#unit_price').val("");
+                    $('#myModal').modal();
+                }
+            });
+
+            $('#promotion_price').focusout(function(){
+                var price = $('#promotion_price').val();
+                if (isNaN(price)) {
+                    $('#promotion_price').val("");
+                    $('#myModal').modal();
+                }
+            });
+        });
+    </script>
 @endsection

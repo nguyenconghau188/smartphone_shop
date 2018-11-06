@@ -81,4 +81,65 @@ class ProductsController extends Controller
 
     	return redirect('admin/products/add')->with('notification', "Thêm thành công!");
     }
+
+    public function getEdit($id)
+    {
+    	$product = Product::find($id);
+    	$types = TypeProduct::all();
+    	$manus = Manufactory::all();
+    	return view('admin.products.edit', ['product'=>$product, 'types'=>$types, 'manus'=>$manus]);
+    }
+
+    public function postEdit(Request $request, $id)
+    {
+    	$product = Product::find($id);
+    	$this->validate($request, 
+    		[
+    			'name'=>'required|unique:products,name,'.$product->id,
+    			'id_type'=>'required',
+    			'description'=>'required',
+    			'unit_price'=>'required',
+    			'product_code'=>'required|unique:products,product_code,'.$product->id,
+    			'id_manufactory'=>'required'
+    		], 
+    		[
+    			'name.required'=>'Vui lòng nhập tên sản phẩm',
+    			'name.unique'=>'Tên sản phẩm đã tồn tại',
+    			'id_type.required'=>'Vui lòng nhập phân khúc sản phẩm',
+    			'description.required'=>'Vui lòng nhập mô tả sản phẩm',
+    			'unit_price.required'=>'Vui lòng nhập giá sản phẩm',
+    			'product_code.required'=>'Vui lòng nhập mã sản phẩm',
+    			'product_code.unique'=>'Mã sản phẩm này đã tồn tại',
+    			'id_manufactory.required'=>'Vui lòng nhập nhà sản xuất'
+    		]);
+
+    	$product->name = $request->name;
+    	$product->name_title = changeTitle($request->name);
+    	$product->id_type = $request->id_type;
+    	$product->description = $request->description;
+    	$product->unit_price = $request->unit_price;
+    	$product->promotion_price = $request->promotion_price ? $request->promotion_price : 0;
+    	$product->product_code = $request->product_code;
+    	$product->id_manufactory = $request->id_manufactory;
+
+    	if ($request->hasFile('image')) 
+    	{
+    		$file = $request->image;
+    		$format = $file->getClientOriginalExtension();
+    		if ($format != 'jgp' && $format != 'jpeg' && $format != 'png') 
+    		{
+    			return redirect('admin/products/add')->with('fail', 'Chỉ nhấp nhận file ảnh .jpg, .jpeg, .png!');
+    		}
+    		$filename = $file->getClientOriginalName();
+    		$image = str_random(4)."_".$filename;
+    		while (file_exists("upload/image/".$image)) {
+    		    $image = str_random(4)."_".$filename;
+    		}
+    		$file->move("upload/image", $image);
+    		$product->image = $image;
+    	}
+    	$product->save();
+
+    	return redirect('admin/products/edit/'.$id)->with('notification', "Sửa thành công!");
+    }
 }
