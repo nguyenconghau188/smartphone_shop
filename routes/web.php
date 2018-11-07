@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('client.pages.home');
 });
 
+Route::group(['prefix'=>'pages'], function(){
+	Route::get('home', 'PagesController@homePage');
+	Route::get('advandce_product', 'PagesController@advandceProduct');
+});
+
 Route::group(['prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'products'], function(){
 		Route::get('list', 'ProductsController@listProduct');
