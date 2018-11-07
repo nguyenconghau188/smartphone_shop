@@ -135,11 +135,20 @@ class ProductsController extends Controller
     		while (file_exists("upload/image/".$image)) {
     		    $image = str_random(4)."_".$filename;
     		}
+    		
     		$file->move("upload/image", $image);
     		$product->image = $image;
     	}
     	$product->save();
 
     	return redirect('admin/products/edit/'.$id)->with('notification', "Sửa thành công!");
+    }
+
+    public function getDelete($id)
+    {
+    	$product = Product::find($id);
+    	unlink("upload/image/".$product->image);
+    	$product->delete();
+    	return redirect('admin/products/list')->with('notification', 'Xóa thành công!');
     }
 }

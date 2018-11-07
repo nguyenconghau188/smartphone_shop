@@ -32,14 +32,14 @@
                         </thead>
                         <tbody>
                             @foreach($products as $product)
-                                <tr class="odd gradeX" align="center" onclick="openDetail({{$product->id}})">
-                                    <td>{{$product->id}}</td>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{$product->typeProduct->name}}</td>
-                                    <td>{{$product->manufactory->name}}</td>
-                                    <td>{{$product->unit_price}}</td>
-                                    <td>{{$product->promotion_price}}</td>
-                                    <td><img src="upload/image/{{$product->image}}" alt="{{$product->name}}" style="width: 60px;"></td>
+                                <tr class="odd gradeX" align="center">
+                                    <td onclick="openDetail({{$product->id}})">{{$product->id}}</td>
+                                    <td onclick="openDetail({{$product->id}})">{{$product->name}}</td>
+                                    <td onclick="openDetail({{$product->id}})">{{$product->typeProduct->name}}</td>
+                                    <td onclick="openDetail({{$product->id}})">{{$product->manufactory->name}}</td>
+                                    <td onclick="openDetail({{$product->id}})">{{$product->unit_price}}</td>
+                                    <td onclick="openDetail({{$product->id}})">{{$product->promotion_price}}</td>
+                                    <td onclick="openDetail({{$product->id}})"><img src="upload/image/{{$product->image}}" alt="{{$product->name}}" style="width: 60px;"></td>
                                     <td>{{$product->sell_quantity}}</td>
                                     <td class="center"><a href="admin/products/delete/{{$product->id}}"> Xóa</a> | <a href="admin/products/edit/{{$product->id}}">Sửa</a></td>
                                 </tr>
@@ -97,11 +97,6 @@
 
 @section('script')
     <script>
-        // $(document).ready(function(){
-        //     $('#dataTables').on('click', 'td', function(){
-        //         alert("hihi");
-        //     });
-        // });
         function openDetail(id)
         {
             $('#myModal'+id).modal();
