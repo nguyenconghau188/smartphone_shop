@@ -18,6 +18,10 @@ Route::get('/', function () {
 Route::group(['prefix'=>'pages'], function(){
 	Route::get('home', 'PagesController@homePage');
 	Route::get('advandce_product', 'PagesController@advandceProduct');
+	Route::get('nearadv_product', 'PagesController@nearadvProduct');
+	Route::get('normal_product', 'PagesController@normalProduct');
+	Route::get('basic_product', 'PagesController@basicProduct');
+	Route::get('product/{id}', 'PagesController@productDetail');
 });
 
 Route::group(['prefix'=>'admin'], function(){

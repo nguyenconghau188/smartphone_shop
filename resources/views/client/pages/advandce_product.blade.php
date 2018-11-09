@@ -20,28 +20,29 @@
             <div class="row">
             	@foreach($products as $product)
 	                <div class="col-md-3 col-sm-6">
-	                    <div class="single-shop-product">
-	                        <div class="product-upper">
-	                        	<a href="pages/product/{{$product->id}}">
-	                        		<img src="upload/image/{{$product->image}}" alt="{{$product->name_title}} href="#">
-	                        	</a>                          
-	                        </div>
-	                        <h2><a href="">{{$product->name}}</a></h2>
-	                        <div class="product-carousel-price">
-	                        	@if($product->promotion_price > 0)
-	                        		<ins>{{number_format($product->promotion_price)}} VND</ins> <del>{{number_format($product->unit_price)}} VND</del>
-	                        	@else
-	                        		<ins>{{number_format($product->unit_price)}} VND</ins>
-	                        	@endif
-	                        </div>  
-	                        
-	                        <div class="product-option-shop">
-	                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Thêm vào giỏ</a>
-	                        </div>                       
-	                    </div>
+	                    <div class="single-product">
+	                        <div class="product-f-image">
+	                                    <img src="upload/image/{{$product->image}}" alt="{{$product->name_title}}">
+	                                    <div class="product-hover">
+	                                        <a href="#" class="add-to-cart-link" style="font-size: 12px;"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+	                                        <a href="pages/product/{{$product->id}}" class="view-details-link" style="font-size: 12px;"><i class="fa fa-link"></i> Xem chi tiết</a>
+	                                    </div>
+	                                </div>
+	                                
+	                                <h2><a href="pages/product/{{$product->id}}">{{$product->name}}</a></h2>
+	                                
+	                                <div class="product-carousel-price">
+	                                	@if($product->promotion_price > 0)
+	                                		<ins>{{number_format($product->promotion_price)}} VND</ins> <br>
+	                                		<del>{{number_format($product->unit_price).' VND'}}</del>
+	                                	@else
+	                                		<ins>{{number_format($product->unit_price)}} VND</ins>
+	                                	@endif
+	                                    
+	                                </div> 
+	                            </div>
 	                </div>
             	@endforeach
-
             </div>
             
             <div class="row">
