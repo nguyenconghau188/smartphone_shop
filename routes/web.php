@@ -49,4 +49,12 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('edit/{id}', 'TypesProductController@getEdit');
 		Route::post('edit/{id}', 'TypesProductController@postEdit');
 	});
+	Route::group(['prefix'=>'users'], function(){
+		Route::get('list', 'UserController@listUser');
+		Route::get('add', 'UserController@getAdd');
+		Route::post('add', 'UserController@postAdd');
+		Route::get('delete/{id}', 'UserController@getDelete');
+		Route::get('edit/{id}', 'UserController@getEdit');
+		Route::post('edit/{id}', 'UserController@postEdit');
+	});
 });
