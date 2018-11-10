@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('client.pages.home');
 });
 
+Route::get('admin/login', 'AdminLoginController@getLogin');
+Route::post('admin/login', 'AdminLoginController@postLogin');
+Route::get('admin/logout', 'AdminLoginController@getLogout');
+
 Route::group(['prefix'=>'pages'], function(){
 	Route::get('home', 'PagesController@homePage');
 	Route::get('advandce_product', 'PagesController@advandceProduct');
@@ -24,7 +28,7 @@ Route::group(['prefix'=>'pages'], function(){
 	Route::get('product/{id}', 'PagesController@productDetail');
 });
 
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['middleware'=>'checkLogin','prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'products'], function(){
 		Route::get('list', 'ProductsController@listProduct');
 		Route::get('add', 'ProductsController@getAdd');
@@ -56,5 +60,13 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('delete/{id}', 'UserController@getDelete');
 		Route::get('edit/{id}', 'UserController@getEdit');
 		Route::post('edit/{id}', 'UserController@postEdit');
+	});
+	Route::group(['prefix'=>'customers'], function(){
+		Route::get('list', 'CustomerController@listCustomer');
+		Route::get('add', 'CustomerController@getAdd');
+		Route::post('add', 'CustomerController@postAdd');
+		Route::get('delete/{id}', 'CustomerController@getDelete');
+		Route::get('edit/{id}', 'CustomerController@getEdit');
+		Route::post('edit/{id}', 'CustomerController@postEdit');
 	});
 });

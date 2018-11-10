@@ -92,4 +92,5 @@ class UserController extends Controller
     	$user->delete();
     	return redirect('admin/users/list')->with('notification', 'Xóa thành công!');
     }
+
 }
