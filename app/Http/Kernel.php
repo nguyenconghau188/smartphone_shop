@@ -40,6 +40,11 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'LoginAdminPages' => [
+            \App\Http\Middleware\CheckLogin::class,
+            \App\Http\Middleware\AdminCheck::class,
+        ],
     ];
 
     /**
@@ -57,6 +62,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'adminLogin' => \App\Http\Middleware\AdminLoginMiddleware::class,
-        'checkLogin' => \App\Http\Middleware\CheckLogin::class,
+        'CheckLogin' => \App\Http\Middleware\CheckLogin::class,
+        'SystemAdminCheck' => \App\Http\Middleware\SystemAdminCheck::class,
+        'CheckCustomer' => \App\Http\Middleware\CheckCustomer::class,
     ];
 }

@@ -1,15 +1,32 @@
-@extends('admin.layout.index')
+@extends('client.layout.index')
 
 @section('content')
-
-        <!-- Page Content -->
+<div class="row">
+    <div class="col-md-4">
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="single-sidebar" style="margin-left: 20%; margin-top: 10%;">
+                    <h2 class="sidebar-title">Tùy chọn</h2>
+                    <ul>
+                        <li><a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                        <li><a href="" class="add-to-cart-link"><i class="fa fa-heart"></i> Yêu thích</a></li>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+    <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Người dùng
-                            <small>Thêm</small>
-                        </h1>
+                        <h2 class="page-header">Người dùng
+                            <small>Thông tin</small>
+                        </h2>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
@@ -30,7 +47,7 @@
                             </div>
                         @endif
 
-                        <form action="admin/customers/edit/{{$customer->id}}" method="POST">
+                        <form action="pages/customer_profile/{{$customer->id}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
                                 <label>Tên đăng nhập</label>
@@ -85,45 +102,8 @@
                                 <input type="text" name="phone_number" id="phone_number" placeholder="Nhập số điện thoại" class="form-control" value="{{$customer->phone_number}}">
                             </div>
                             <div class="form-group">
-                                <label>Phân quyền</label>
-                                <select name="permission" class="form-control">
-                                    <option disabled selected value>--- Vui lòng phân quyền người dùng ---</option>
-                                    <option 
-                                    @if($customer->permission == "systemAdmin")
-                                        {{"selected"}}
-                                    @endif    
-                                    value="1">Admin hệ thống</option>
-                                    <option 
-                                    @if($customer->permission == "admin")
-                                        {{"selected"}}
-                                    @endif
-                                    value="2">Admin</option>
-                                    <option 
-                                    @if($customer->permission == "customer")
-                                        {{"selected"}}
-                                    @endif
-                                    value="3">Khách hàng</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label>Trạng thái</label>
-                                <select name="active" class="form-control">
-                                    <option disabled selected value>--- Chọn trạng thái người dùng ---</option>
-                                    <option 
-                                    @if($customer->active == 0)
-                                        {{"selected"}}
-                                    @endif
-                                    value="0">Chưa kích hoạt</option>
-                                    <option 
-                                    @if($customer->active == 1)
-                                        {{"selected"}}
-                                    @endif
-                                    value="1">Kích hoạt</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Ghi chú</label>
-                                <textarea name="note" class="form-control" placeholder="Nhập ghi chú" ">{{$customer->note}}</textarea>
+                                <input type="text" name="active" class="form-control" value="{{$customer->active ? 'Kích hoạt' : 'Chưa kích hoạt'}}" placeholder="" disabled>
                             </div>
                             <button type="submit" class="btn btn-default">Sửa</button>
                             <button type="reset" class="btn btn-default">Reset</button>
@@ -147,6 +127,9 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
 
 @endsection
 

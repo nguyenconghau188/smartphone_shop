@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Manufactory;
 use App\TypeProduct;
+use App\Customer;
 
 
 class PagesController extends Controller
@@ -45,5 +46,13 @@ class PagesController extends Controller
     {
     	$products = Product::where('id_type', 1)->orderBy('created_at', 'desc')->paginate(12);
     	return view('client.pages.basic_product', ['products'=>$products]); 
+    }
+
+    public function getCustomerProfile($id)
+    {
+        $customer = Customer::find($id);
+    	// var_dump($customer);
+    	// echo 'time: '.strtotime($customer->birthday);
+    	return view('client.pages.customer_profile', ['customer'=>$customer]);
     }
 }

@@ -34,7 +34,7 @@
                         <h3 class="panel-title">Vui lòng đăng nhập</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="" method="POST">
+                        <form role="form" action="login" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group" id="hienthongbao">          
                             </div>
@@ -49,6 +49,12 @@
                             @if(session('fail'))
                                 <div class="alert alert-danger">
                                     {{session('fail')}}
+                                </div>
+                            @endif
+
+                            @if(session('thongba0'))
+                                <div class="alert alert-success">
+                                    {{session('thongbao')}}
                                 </div>
                             @endif
                             <fieldset>

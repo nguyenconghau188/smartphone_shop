@@ -76,9 +76,9 @@
                                 <label>Phân quyền</label>
                                 <select name="permission" class="form-control">
                                     <option disabled selected value>--- Vui lòng phân quyền người dùng ---</option>
-                                    <option value="1">Admin hệ thống</option>
-                                    <option value="2">Admin</option>
-                                    <option value="3">Khách hàng</option>
+                                    <option value="systemAdmin">Admin hệ thống</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="customer">Khách hàng</option>
                                 </select>
                             </div>
                             <div class="form-group">

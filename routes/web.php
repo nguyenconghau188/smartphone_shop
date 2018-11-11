@@ -19,16 +19,22 @@ Route::get('admin/login', 'AdminLoginController@getLogin');
 Route::post('admin/login', 'AdminLoginController@postLogin');
 Route::get('admin/logout', 'AdminLoginController@getLogout');
 
-Route::group(['prefix'=>'pages'], function(){
+Route::get('login', 'LoginController@getLogin');
+Route::post('login', 'LoginController@postLogin');
+Route::get('logout', 'LoginController@getLogout');
+
+Route::group(['middleware'=>'CheckCustomer','prefix'=>'pages'], function(){
 	Route::get('home', 'PagesController@homePage');
 	Route::get('advandce_product', 'PagesController@advandceProduct');
 	Route::get('nearadv_product', 'PagesController@nearadvProduct');
 	Route::get('normal_product', 'PagesController@normalProduct');
 	Route::get('basic_product', 'PagesController@basicProduct');
 	Route::get('product/{id}', 'PagesController@productDetail');
+	Route::get('customer_profile/{id}', 'PagesController@getCustomerProfile');
+	Route::post('customer_profile/{id}', 'PagesController@postCustomerProfile');
 });
 
-Route::group(['middleware'=>'checkLogin','prefix'=>'admin'], function(){
+Route::group(['middleware'=>['LoginAdminPages'],'prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'products'], function(){
 		Route::get('list', 'ProductsController@listProduct');
 		Route::get('add', 'ProductsController@getAdd');
@@ -61,7 +67,7 @@ Route::group(['middleware'=>'checkLogin','prefix'=>'admin'], function(){
 		Route::get('edit/{id}', 'UserController@getEdit');
 		Route::post('edit/{id}', 'UserController@postEdit');
 	});
-	Route::group(['prefix'=>'customers'], function(){
+	Route::group(['middleware'=>'SystemAdminCheck','prefix'=>'customers'], function(){
 		Route::get('list', 'CustomerController@listCustomer');
 		Route::get('add', 'CustomerController@getAdd');
 		Route::post('add', 'CustomerController@postAdd');
