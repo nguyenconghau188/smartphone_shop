@@ -1,0 +1,5 @@
+1. install laravel shopping cart: composer require gloudemans/shoppingcart
+2. add service provider for package and alias of package
+->open file config/app.php
+	- add "Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class" into provider array
+	- add "'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class," into aliases array
