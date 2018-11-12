@@ -15,6 +15,6 @@ class BillDetail extends Model
 
     public function product()
     {
-    	return $this->hasOne('App\Product', 'id_product', 'id');
+    	return $this->hasOne('App\Product', 'id', 'id_product');
     }
 }

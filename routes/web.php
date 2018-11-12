@@ -67,6 +67,13 @@ Route::group(['middleware'=>['LoginAdminPages'],'prefix'=>'admin'], function(){
 		Route::get('edit/{id}', 'TypesProductController@getEdit');
 		Route::post('edit/{id}', 'TypesProductController@postEdit');
 	});
+	Route::group(['prefix'=>'bills'], function(){
+		Route::get('list', 'BillController@listBills');
+		Route::get('list_bill_in_process', 'BillController@listBillsInProcess');
+		Route::get('delete/{id}', 'BillController@getDelete');
+		Route::get('bill_detail/{id}', 'BillController@billDetail');
+		Route::post('billStatus', 'BillController@billStatus');
+	});
 	Route::group(['prefix'=>'users'], function(){
 		Route::get('list', 'UserController@listUser');
 		Route::get('add', 'UserController@getAdd');
