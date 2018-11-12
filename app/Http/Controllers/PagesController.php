@@ -55,4 +55,19 @@ class PagesController extends Controller
     	// echo 'time: '.strtotime($customer->birthday);
     	return view('client.pages.customer_profile', ['customer'=>$customer]);
     }
+
+    public function wishList()
+    {
+        return view('client.pages.wishlist');
+    }
+
+    public function news()
+    {
+        return view('client.pages.news');
+    }
+
+    public function contact()
+    {
+        return view('client.pages.contact');
+    }
 }

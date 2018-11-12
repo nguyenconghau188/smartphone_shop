@@ -16,8 +16,8 @@
                         <li><a href="pages/nearadv_product">Sản phẩm cận cao cấp</a></li>
                         <li><a href="pages/normal_product">Sản phẩm trung cấp</a></li>
                         <li><a href="pages/basic_product">Sản phẩm bình dân</a></li>
-                        <li><a href="checkout.html">Tin tức</a></li>
-                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="pages/news">Tin tức</a></li>
+                        <li><a href="pages/contact">Liên hệ</a></li>
                     </ul>
                 </div>  
             </div>

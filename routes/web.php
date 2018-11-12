@@ -25,6 +25,8 @@ Route::get('logout', 'LoginController@getLogout');
 
 Route::group(['middleware'=>'CheckCustomer','prefix'=>'pages'], function(){
 	Route::get('home', 'PagesController@homePage');
+	Route::get('news', 'PagesController@news');
+	Route::get('contact', 'PagesController@contact');
 	Route::get('advandce_product', 'PagesController@advandceProduct');
 	Route::get('nearadv_product', 'PagesController@nearadvProduct');
 	Route::get('normal_product', 'PagesController@normalProduct');
@@ -40,6 +42,7 @@ Route::group(['middleware'=>'CheckCustomer','prefix'=>'pages'], function(){
 	Route::get('deleteCart', 'CartController@deleteCart')->middleware('CustomerLogin');
 	Route::get('checkout', 'CartController@getCheckout')->middleware('CustomerLogin');
 	Route::post('checkout', 'CartController@postCheckout')->middleware('CustomerLogin');
+	Route::get('wishlist', 'PagesController@wishList')->middleware('CustomerLogin');
 });
 
 Route::group(['middleware'=>['LoginAdminPages'],'prefix'=>'admin'], function(){

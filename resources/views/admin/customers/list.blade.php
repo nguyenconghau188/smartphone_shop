@@ -50,9 +50,9 @@
                                     <td>{{$customer->phone_number}}</td>
                                     <td>
                                         <?php
-                                        if($customer->permission == 1)
+                                        if($customer->permission == "systemAdmin")
                                             echo "Admin hệ thống";
-                                        else if ($customer->permission == 2)
+                                        else if ($customer->permission == "admin")
                                             echo "Admin";
                                         else
                                             echo "Khách hàng";
@@ -60,7 +60,7 @@
                                     </td>
                                     <td>
                                         <?php
-                                        if($customer->gender == 1)
+                                        if($customer->active == 1)
                                             echo "Kích hoạt";
                                         else
                                             echo "Chưa kích hoạt";
