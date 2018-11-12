@@ -30,13 +30,16 @@ Route::group(['middleware'=>'CheckCustomer','prefix'=>'pages'], function(){
 	Route::get('normal_product', 'PagesController@normalProduct');
 	Route::get('basic_product', 'PagesController@basicProduct');
 	Route::get('product/{id}', 'PagesController@productDetail');
-	Route::get('customer_profile/{id}', 'PagesController@getCustomerProfile');
-	Route::post('customer_profile/{id}', 'PagesController@postCustomerProfile');
-	Route::post('cart', 'CartController@cart');
-	Route::get('cart_detail', 'CartController@cartDetail');
-	Route::get('submitSub/{id}', 'CartController@quantitySub');
-	Route::get('submitAdd/{id}', 'CartController@quantityAdd');
-	Route::get('deleteCart', 'CartController@deleteCart');
+	Route::get('customer_profile/{id}', 'PagesController@getCustomerProfile')->middleware('CustomerLogin');
+	Route::post('customer_profile/{id}', 'PagesController@postCustomerProfile')->middleware('CustomerLogin');
+	Route::post('cart', 'CartController@cart')->middleware('CustomerLogin');
+	Route::get('cart_detail', 'CartController@cartDetail')->middleware('CustomerLogin');
+	Route::get('removeItem/{id}', 'CartController@removeItem')->middleware('CustomerLogin');
+	Route::get('submitSub/{id}', 'CartController@quantitySub')->middleware('CustomerLogin');
+	Route::get('submitAdd/{id}', 'CartController@quantityAdd')->middleware('CustomerLogin');
+	Route::get('deleteCart', 'CartController@deleteCart')->middleware('CustomerLogin');
+	Route::get('checkout', 'CartController@getCheckout')->middleware('CustomerLogin');
+	Route::post('checkout', 'CartController@postCheckout')->middleware('CustomerLogin');
 });
 
 Route::group(['middleware'=>['LoginAdminPages'],'prefix'=>'admin'], function(){

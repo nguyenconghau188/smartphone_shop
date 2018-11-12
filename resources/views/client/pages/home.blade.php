@@ -16,7 +16,7 @@
 	                                <div class="product-f-image">
 	                                    <img src="upload/image/{{$product->image}}" alt="{{$product->name_title}}">
 	                                    <div class="product-hover">
-	                                    	<form action="{{url('pages/cart')}}" method="POST" accept-charset="utf-8" id="formCart{{$product->id}}">
+	                                    	<form action="pages/cart" method="POST" accept-charset="utf-8" id="formCart{{$product->id}}">
 	                                    		<input type="hidden" name="product_id" value="{{$product->id}}">
 	                                    		<input type="hidden" name="_token" value="{{csrf_token()}}">
 	                                    		<a href="javascript: submitform()" class="add-to-cart-link" style="font-size: 12px;"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>

@@ -6,12 +6,12 @@
                             @if(isset($customer_is_login))
                                 <li><a href="pages/customer_profile/{{$customer_is_login->id}}"><i class="fa fa-user"></i>{{$customer_is_login->name}}</a></li>
                                 <li><a href="#"><i class="fa fa-heart"></i> Yêu thích</a></li>
-                                <li><a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng</a></li>
+                                <li><a href="pages/cart_detail"><i class="fa fa-user"></i> Giỏ hàng</a></li>
                                 <li><a href="logout"><i class="fa fa-user"></i> Đăng xuất</a></li>
                             @else
                                 <li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
                                 <li><a href="#"><i class="fa fa-heart"></i> Yêu thích</a></li>
-                                <li><a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng</a></li>
+                                <li><a href="pages/cart_detail"><i class="fa fa-user"></i> Giỏ hàng</a></li>
                                 <li><a href="login"><i class="fa fa-user"></i> Đăng nhập</a></li>
                             @endif
                         </ul>

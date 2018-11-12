@@ -21,24 +21,24 @@
                 
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="post" action="#">
+
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
                                             
-                                            <th class="product-thumbnail">&nbsp;</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
-                                            <th class="product-remove">&nbsp;</th>
+                                            <th class="product-thumbnail">Hình ảnh</th>
+                                            <th class="product-name">Sản phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product-quantity">Số lượng</th>
+                                            <th class="product-subtotal">Thành tiền</th>
+                                            <th class="product-remove">Xóa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     	@foreach($cart as $item)
 	                                    	<tr class="cart_item">
 	                                            <td class="product-thumbnail">
-	                                                <a href="pages/product/{{$item->id}}"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="upload/image/{{$item->options->image}}"></a>
+	                                                <a href="pages/product/{{$item->id}}"><img style="width: 10em;" height="145" alt="poster_1_up" class="shop_thumbnail" src="upload/image/{{$item->options->image}}"></a>
 	                                            </td>
 
 	                                            <td class="product-name">
@@ -46,34 +46,40 @@
 	                                            </td>
 
 	                                            <td class="product-price">
-	                                                <span class="amount">{{$item->price}}</span> 
+	                                                <span class="amount">{{number_format($item->price)}} VND</span> 
 	                                            </td>
 
 	                                            <td class="product-quantity">
 	                                                <div class="quantity buttons_added">
-	                                                    <a href="pages/submitSub/{{$item->id}}"><input type="button" class="minus" value="-"></a>
-	                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="{{$item->qty}}" min="0" step="1">
-	                                                    <a href="pages/submitAdd/{{$item->id}}"><input type="button" class="plus" value="+"></a>
+	                                                    <a href="pages/submitSub/{{$item->id}}" ><input type="button" class="minus" value="-" style="width: 2em; display: inline-block;"></a>
+	                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="{{$item->qty}}" min="0" step="1" disabled style="width: 3em; display: inline-block;">
+	                                                    <a href="pages/submitAdd/{{$item->id}}" ><input type="button" class="plus" value="+" style="width: 2em; display: inline-block;"></a>
 	                                                </div>
 	                                            </td>
 
 	                                            <td class="product-subtotal">
-	                                                <span class="amount">£15.00</span> 
+	                                                <span class="amount">
+	                                                	<?php
+	                                                		$cost = $item->price * $item->qty;
+	                                                		echo number_format($cost).' VND';
+	                                                	?>
+	                                                </span> 
 	                                            </td>
 	                                            <td class="product-remove">
-	                                                <a title="Remove this item" class="remove" href="#">×</a> 
+	                                                <a title="Remove this item" class="remove" href="pages/removeItem/{{$item->id}}">X</a> 
 	                                            </td>
 	                                        </tr>
                                     	@endforeach
                                         <tr>
                                             <td class="actions" colspan="6">
-                                                <input type="submit" value="Update Cart" name="update_cart" class="button">
-                                                <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
+                                            	<a class="add_to_cart_button" href="pages/checkout">Đặt hàng</a>
+                                                <a class="add_to_cart_button" href="pages/deleteCart">Xóa giỏ hàng</a>
+                                                
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </form>
+
 
                             <div class="cart-collaterals">
 
