@@ -3,3 +3,7 @@
 ->open file config/app.php
 	- add "Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class" into provider array
 	- add "'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class," into aliases array
+
+3. Run "php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config" to copy file cart.php to config and may be change config in there
+4. Migration: run "php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="migrations"" to create file migration
+-> run php artisan migrate

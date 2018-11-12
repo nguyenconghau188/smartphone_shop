@@ -32,6 +32,11 @@ Route::group(['middleware'=>'CheckCustomer','prefix'=>'pages'], function(){
 	Route::get('product/{id}', 'PagesController@productDetail');
 	Route::get('customer_profile/{id}', 'PagesController@getCustomerProfile');
 	Route::post('customer_profile/{id}', 'PagesController@postCustomerProfile');
+	Route::post('cart', 'CartController@cart');
+	Route::get('cart_detail', 'CartController@cartDetail');
+	Route::get('submitSub/{id}', 'CartController@quantitySub');
+	Route::get('submitAdd/{id}', 'CartController@quantityAdd');
+	Route::get('deleteCart', 'CartController@deleteCart');
 });
 
 Route::group(['middleware'=>['LoginAdminPages'],'prefix'=>'admin'], function(){
